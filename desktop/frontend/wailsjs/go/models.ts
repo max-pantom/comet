@@ -260,4 +260,6 @@ export namespace main {
 		    return a;
 		}
 	}
+
 }
+

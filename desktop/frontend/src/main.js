@@ -174,15 +174,15 @@ function renderMCPStatus() {
     elements.mcpBadge.className = `badge ${running ? 'badge-active' : 'badge-neutral'}`;
     elements.mcpDescription.textContent = running
         ? `Ready for local agent connections${status.pid ? ` · PID ${status.pid}` : ''}. It will restart when the app opens.`
-        : 'Start the server when you want an agent to use TikTok Scout.';
+        : 'Start the server when you want an agent to use Comet.';
     elements.mcpEndpoint.textContent = status.url;
     elements.mcpOrb.classList.toggle('is-running', running);
     elements.mcpStart.disabled = running;
     elements.mcpStop.disabled = !running;
     elements.mcpPort.disabled = running;
     elements.mcpPort.value = status.port;
-    elements.codexConfig.textContent = `[mcp_servers.tiktok-scout]\nurl = "${status.url}"`;
-    elements.claudeConfig.textContent = `claude mcp add --transport http --scope user tiktok-scout ${status.url}`;
+    elements.codexConfig.textContent = `[mcp_servers.comet]\nurl = "${status.url}"`;
+    elements.claudeConfig.textContent = `claude mcp add --transport http --scope user comet ${status.url}`;
     elements.mcpError.textContent = status.error || '';
     elements.mcpError.hidden = !status.error;
 }

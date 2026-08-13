@@ -36,9 +36,9 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 mcp = FastMCP(
-    "tiktok-scout",
+    "comet",
     instructions=(
-        "TikTok Scout serializes scrape tools so pacing is preserved. Prefer "
+        "Comet serializes scrape tools so pacing is preserved. Prefer "
         "run_playbook_scan for the complete workflow. The underlying method is "
         "available at playbook://slideshow-distribution. Keep the smaller tools "
         "for deliberate one-step runs. All tools share the desktop app's cache."
@@ -161,7 +161,7 @@ def apply_slideshow_distribution_playbook() -> str:
     """Give an agent the method and the preferred automated entry point."""
     return (
         _playbook_text()
-        + "\n\n## TikTok Scout execution\n\n"
+        + "\n\n## Comet execution\n\n"
         + "Use `run_playbook_scan` to execute Steps 2–3 as one serialized run."
     )
 
@@ -412,7 +412,7 @@ async def account_report(username: str, top_n: int = 8) -> str:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="TikTok Scout MCP server")
+    parser = argparse.ArgumentParser(description="Comet MCP server")
     parser.add_argument(
         "--transport",
         choices=("stdio", "streamable-http"),

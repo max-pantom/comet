@@ -211,10 +211,10 @@ func (a *App) CopyMCPConfig(client string) (string, error) {
 	var config string
 	switch strings.ToLower(strings.TrimSpace(client)) {
 	case "codex":
-		config = fmt.Sprintf("[mcp_servers.tiktok-scout]\nurl = %q", status.URL)
+		config = fmt.Sprintf("[mcp_servers.comet]\nurl = %q", status.URL)
 	case "claude", "claude-code":
 		config = fmt.Sprintf(
-			"claude mcp add --transport http --scope user tiktok-scout %s",
+			"claude mcp add --transport http --scope user comet %s",
 			status.URL,
 		)
 	default:

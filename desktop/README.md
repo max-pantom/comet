@@ -1,4 +1,4 @@
-# TikTok Scout desktop
+# Comet desktop
 
 Wails v2 + vanilla JavaScript desktop UI for the Python `tiktok-scout`
 scraper. The app deliberately does not reimplement scraping in Go.
@@ -36,4 +36,4 @@ npm --prefix frontend run build
 $(go env GOPATH)/bin/wails build -clean
 ```
 
-The macOS application is written to `build/bin/TikTok Scout.app`.
+The macOS application is written to `build/bin/Comet.app`.

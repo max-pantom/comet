@@ -317,7 +317,7 @@
                                 <h2 id="mcp-status-title">Server stopped</h2>
                                 <span class="badge badge-neutral" id="mcp-status-badge">Stopped</span>
                             </div>
-                            <p id="mcp-status-description">Start the server when you want an agent to use TikTok Scout.</p>
+                            <p id="mcp-status-description">Start the server when you want an agent to use Comet.</p>
                             <code class="endpoint" id="mcp-endpoint">http://127.0.0.1:8765/mcp/</code>
                             <div class="mcp-actions">
                                 <button class="button button-primary" id="mcp-start" type="button">Start server</button>
@@ -352,7 +352,7 @@
                             <div class="client-icon" aria-hidden="true"><span>⌘</span></div>
                             <div><p class="card-kicker">config.toml</p><h2 id="codex-config-title">Codex</h2></div>
                         </div>
-                        <pre id="codex-config">[mcp_servers.tiktok-scout]
+                        <pre id="codex-config">[mcp_servers.comet]
 url = "http://127.0.0.1:8765/mcp/"</pre>
                         <button class="button button-secondary copy-config" type="button" data-client="codex">Copy Codex config</button>
                     </section>
@@ -362,7 +362,7 @@ url = "http://127.0.0.1:8765/mcp/"</pre>
                             <div class="client-icon" aria-hidden="true"><span>C</span></div>
                             <div><p class="card-kicker">Terminal</p><h2 id="claude-config-title">Claude Code</h2></div>
                         </div>
-                        <pre id="claude-config">claude mcp add --transport http --scope user tiktok-scout http://127.0.0.1:8765/mcp/</pre>
+                        <pre id="claude-config">claude mcp add --transport http --scope user comet http://127.0.0.1:8765/mcp/</pre>
                         <button class="button button-secondary copy-config" type="button" data-client="claude">Copy Claude command</button>
                     </section>
                 </div>

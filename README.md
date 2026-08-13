@@ -47,13 +47,13 @@ bound to this Mac only.
 For Claude Code:
 
 ```bash
-claude mcp add --transport http --scope user tiktok-scout http://127.0.0.1:8765/mcp/
+claude mcp add --transport http --scope user comet http://127.0.0.1:8765/mcp/
 ```
 
 For Codex:
 
 ```toml
-[mcp_servers.tiktok-scout]
+[mcp_servers.comet]
 url = "http://127.0.0.1:8765/mcp/"
 ```
 
