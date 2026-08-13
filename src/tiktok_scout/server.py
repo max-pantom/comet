@@ -21,6 +21,8 @@ import time
 from dataclasses import asdict
 import logging
 import os
+from urllib.parse import quote_plus, urlparse
+from urllib.request import urlopen
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -220,6 +222,89 @@ def _report_payload(username: str, top_n: int = 8) -> dict[str, Any]:
         "stats": _stats_payload(stats),
         "top_posts": [dict(row) for row in top],
     }
+
+
+def _app_link_kind(link: str) -> str:
+    host = (urlparse(link).hostname or "").lower()
+    if host in {"apps.apple.com", "itunes.apple.com", "play.google.com"}:
+        return "app_store"
+    if any(host == domain or host.endswith("." + domain) for domain in ("linktr.ee", "beacons.ai", "stan.store", "lnk.bio", "bio.site")):
+        return "needs_manual_check"
+    return "other"
+
+
+@mcp.tool()
+async def check_app_store(query: str, country: str = "us", limit: int = 10) -> dict[str, Any]:
+    """Check Apple's public iTunes Search API for competing apps."""
+    query = query.strip()
+    if not query:
+        raise ValueError("Provide an app or idea to search for")
+    if not 1 <= limit <= 50:
+        raise ValueError("limit must be between 1 and 50")
+    activity_id = await _activity_start("check_app_store", {"query": query, "country": country, "limit": limit})
+    try:
+        url = "https://itunes.apple.com/search?term=" + quote_plus(query) + f"&country={quote_plus(country)}&entity=software&limit={limit}"
+        with urlopen(url, timeout=15) as response:
+            payload = json.load(response)
+        apps = []
+        for rank, item in enumerate(payload.get("results", [])[:limit], 1):
+            apps.append({"rank": rank, "name": item.get("trackName", ""), "artist": item.get("artistName", ""), "rating": item.get("averageUserRating"), "rating_count": item.get("userRatingCount", 0), "url": item.get("trackViewUrl", ""), "artwork_url": item.get("artworkUrl100", "")})
+        result = {"query": query, "country": country, "result_count": len(apps), "apps": apps}
+        await _activity_finish(activity_id, "done", f"Found {len(apps)} App Store matches")
+        return result
+    except Exception as exc:
+        await _activity_finish(activity_id, "error", str(exc))
+        raise
+
+
+@mcp.tool()
+async def discover_niches(seed_category: str, max_results: int = 20) -> dict[str, Any]:
+    """Discover adjacent hashtags surfaced by TikTok search results."""
+    seed = seed_category.strip().lstrip("#")
+    if not seed:
+        raise ValueError("Provide a seed category")
+    activity_id = await _activity_start("discover_niches", {"seed_category": seed, "max_results": max_results})
+    try:
+        async with _scrape_lock:
+            posts, _ = await _search_and_cache(seed, max_results=max_results)
+        counts: dict[str, int] = {}
+        for post in posts:
+            for tag in post.caption.split():
+                if tag.startswith("#"):
+                    key = tag.strip("#,.!?\"'()[]{}").lower()
+                    if key and key != seed.lower():
+                        counts[key] = counts.get(key, 0) + max(post.view_count, 0)
+        candidates = [{"keyword": k, "rough_view_volume": v} for k, v in sorted(counts.items(), key=lambda pair: pair[1], reverse=True)[:max_results]]
+        result = {"seed_category": seed, "candidates": candidates, "source": "TikTok search result captions"}
+        await _activity_finish(activity_id, "done", f"Found {len(candidates)} adjacent hashtags")
+        return result
+    except Exception as exc:
+        await _activity_finish(activity_id, "error", str(exc))
+        raise
+
+
+@mcp.tool()
+async def find_app_accounts(keywords: list[str], max_results: int = 20) -> dict[str, Any]:
+    """Find surfaced accounts and classify their bio links."""
+    terms = list(dict.fromkeys(k.strip() for k in keywords if k.strip()))
+    if not terms:
+        raise ValueError("Provide at least one keyword")
+    activity_id = await _activity_start("find_app_accounts", {"keywords": terms, "max_results": max_results})
+    try:
+        accounts: dict[str, dict[str, Any]] = {}
+        async with _scrape_lock:
+            for term in terms:
+                posts, _ = await _search_and_cache(term, max_results=max_results)
+                for post in posts:
+                    if post.username:
+                        accounts.setdefault(post.username, {"username": post.username, "bio_link": post.bio_link, "link_kind": _app_link_kind(post.bio_link) if post.bio_link else "none"})
+        values = list(accounts.values())
+        result = {"keywords": terms, "app_accounts": [a for a in values if a["link_kind"] == "app_store"], "needs_manual_check": [a for a in values if a["link_kind"] == "needs_manual_check"], "unclaimed_accounts": [a for a in values if a["link_kind"] == "none"], "all_accounts": values}
+        await _activity_finish(activity_id, "done", f"Classified {len(values)} accounts")
+        return result
+    except Exception as exc:
+        await _activity_finish(activity_id, "error", str(exc))
+        raise
 
 
 @mcp.tool()

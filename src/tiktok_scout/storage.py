@@ -48,6 +48,9 @@ class Store:
         db_path.parent.mkdir(parents=True, exist_ok=True)
         self.conn = sqlite3.connect(db_path)
         self.conn.executescript(SCHEMA)
+        columns = {row[1] for row in self.conn.execute("PRAGMA table_info(posts)")}
+        if "bio_link" not in columns:
+            self.conn.execute("ALTER TABLE posts ADD COLUMN bio_link TEXT NOT NULL DEFAULT ''")
         self.conn.commit()
 
     def upsert_posts(self, posts: list[Post]) -> int:
@@ -56,14 +59,15 @@ class Store:
             """
             INSERT INTO posts (post_id, username, caption, create_time, view_count,
                 like_count, comment_count, share_count, is_slideshow, image_count,
-                url, scraped_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                url, scraped_at, bio_link)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(post_id) DO UPDATE SET
                 view_count=excluded.view_count,
                 like_count=excluded.like_count,
                 comment_count=excluded.comment_count,
                 share_count=excluded.share_count,
-                scraped_at=excluded.scraped_at
+                scraped_at=excluded.scraped_at,
+                bio_link=excluded.bio_link
             """,
             rows,
         )

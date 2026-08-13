@@ -433,6 +433,7 @@ def _post_from_item(item: dict[str, Any]) -> Post:
         is_slideshow=bool(images),
         image_count=len(images),
         url=f"https://www.tiktok.com/@{(item.get('author') or {}).get('uniqueId', '')}/video/{item.get('id', '')}",
+        bio_link=((item.get("author") or {}).get("bioLink") or {}).get("link", ""),
     )
 
 

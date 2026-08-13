@@ -21,6 +21,7 @@ class Post:
     is_slideshow: bool = False
     image_count: int = 0  # >0 for slideshows
     url: str = ""
+    bio_link: str = ""
     scraped_at: datetime = field(default_factory=lambda: datetime.now(timezone.utc))
 
     def to_row(self) -> tuple:
@@ -37,6 +38,7 @@ class Post:
             self.image_count,
             self.url,
             self.scraped_at.isoformat(),
+            self.bio_link,
         )
 
 
