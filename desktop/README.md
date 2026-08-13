@@ -34,6 +34,9 @@ go test ./...
 go vet ./...
 npm --prefix frontend run build
 $(go env GOPATH)/bin/wails build -clean
+
+# Build and replace the installed macOS app (also removes the old TikTok Scout.app)
+./install-macos.sh
 ```
 
 The macOS application is written to `build/bin/Comet.app`.
