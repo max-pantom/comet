@@ -1,0 +1,32 @@
+# Python environments and generated files
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Local TikTok Scout data (cookies, sessions, cache, screenshots, logs)
+.tiktok_scout/
+browser-profile/
+session.json
+cache.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+screenshots/
+*.log
+
+# Desktop build and frontend dependencies
+desktop/build/
+desktop/frontend/node_modules/
+desktop/frontend/dist/
+desktop/frontend/.vite/
+
+# OS/editor noise
+.DS_Store
+.idea/
+.vscode/
+*.swp

@@ -1,0 +1,20 @@
+[project]
+name = "tiktok-scout"
+version = "0.1.0"
+description = "Cheap, self-hosted TikTok account/format scout — MCP server for the slideshow-distribution-app-growth playbook"
+requires-python = ">=3.10"
+dependencies = [
+    "playwright>=1.45,<1.61",
+    "mcp==1.9.4",
+    "websockets>=12,<16",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+tiktok_scout = ["playbooks/**/*.md"]

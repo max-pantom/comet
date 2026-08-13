@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="#0B0B0F" name="theme-color">
+    <title>Comet</title>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<div class="app-frame" id="app">
+    <aside class="sidebar">
+        <div class="brand" aria-label="Comet">
+            <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <rect x="4" y="4" width="12.5" height="12.5" rx="4"></rect>
+                    <path d="M8 8.5h4.5M8 12h2.75M15 15l5 5"></path>
+                </svg>
+            </span>
+            <div class="brand-copy">
+                <strong>Comet</strong>
+                <span>TikTok research console</span>
+            </div>
+        </div>
+
+        <nav class="primary-nav" aria-label="Main navigation">
+            <p class="nav-label">Workspace</p>
+            <button class="nav-item is-active" type="button" data-screen="activity" aria-label="Activity" aria-current="page">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 16.5 9 12l3 2.5 7.5-8"></path><path d="M15.5 6.5h4v4"></path></svg>
+                <span>Activity</span><span class="nav-index" aria-hidden="true">01</span>
+            </button>
+            <button class="nav-item" type="button" data-screen="login" aria-label="Session">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8.5 11.25V8a3.5 3.5 0 0 1 7 0v3.25"></path><rect x="5" y="11.25" width="14" height="9" rx="2.5"></rect><path d="M12 15v2"></path></svg>
+                <span>Session</span>
+                <span class="nav-index" aria-hidden="true">02</span>
+            </button>
+            <button class="nav-item" type="button" data-screen="search" aria-label="Search">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="5.75"></circle><path d="m15 15 4.25 4.25"></path></svg>
+                <span>Search</span>
+                <span class="nav-index" aria-hidden="true">03</span>
+            </button>
+            <button class="nav-item" type="button" data-screen="accounts" aria-label="Accounts">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.75 19.25v-1.5A3.75 3.75 0 0 1 8.5 14h3A3.75 3.75 0 0 1 15.25 17.75v1.5"></path><circle cx="10" cy="8" r="3.25"></circle><path d="M16.25 10.25a2.75 2.75 0 0 1 0 5.5M17.25 17.25h.5a2 2 0 0 1 2 2"></path></svg>
+                <span>Accounts</span>
+                <span class="nav-index" aria-hidden="true">04</span>
+            </button>
+            <button class="nav-item" type="button" data-screen="report" aria-label="Account report">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19.25V13M10 19.25V9M15 19.25V11M20 19.25V4.75"></path></svg>
+                <span>Report</span>
+                <span class="nav-index" aria-hidden="true">05</span>
+            </button>
+            <button class="nav-item" type="button" data-screen="mcp" aria-label="MCP server">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5"></rect><path d="M8 12h8M12 8v8"></path><circle cx="12" cy="12" r="1.5"></circle></svg>
+                <span>MCP server</span>
+                <span class="nav-index" aria-hidden="true">06</span>
+            </button>
+            <button class="nav-item" type="button" data-screen="settings" aria-label="Settings">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19 12a7.3 7.3 0 0 0-.08-1l2-1.55-2-3.45-2.45 1a7.4 7.4 0 0 0-1.73-1L14.4 3.4h-4.8L9.26 6a7.4 7.4 0 0 0-1.73 1L5.08 6l-2 3.45 2 1.55a7.3 7.3 0 0 0 0 2l-2 1.55 2 3.45 2.45-1a7.4 7.4 0 0 0 1.73 1l.34 2.6h4.8l.34-2.6a7.4 7.4 0 0 0 1.73-1l2.45 1 2-3.45-2-1.55c.05-.33.08-.66.08-1Z"></path></svg>
+                <span>Settings</span>
+                <span class="nav-index" aria-hidden="true">07</span>
+            </button>
+        </nav>
+
+        <div class="sidebar-foot">
+            <div class="local-note">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 10V8a5 5 0 0 1 10 0v2"></path><rect x="4" y="10" width="16" height="10" rx="3"></rect></svg>
+                <div><strong>Private by default</strong><span>Cache stays on this Mac</span></div>
+            </div>
+            <span class="build-label">Desktop · local runtime</span>
+        </div>
+    </aside>
+
+    <div class="workspace">
+        <header class="workspace-bar">
+            <div class="workspace-context">
+                <span>Scout workspace</span>
+                <strong id="workspace-title">Activity</strong>
+            </div>
+            <div class="workspace-actions">
+                <span class="quiet-chip">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 8.5h14M7.5 4.5h9a2.5 2.5 0 0 1 2.5 2.5v10a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 5 17V7a2.5 2.5 0 0 1 2.5-2.5Z"></path><path d="M8.5 13h3M8.5 16h6.5"></path></svg>
+                    SQLite cache
+                </span>
+                <div class="queue-status" aria-label="Scrape queue status">
+                    <span class="status-dot" id="queue-dot" aria-hidden="true"></span>
+                    <div>
+                        <strong id="queue-label">Scrape queue ready</strong>
+                        <span>One action at a time</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main id="main-content" class="main-content">
+            <div id="app-error" class="notice notice-error" role="alert" tabindex="-1" hidden></div>
+            <div id="app-status" class="sr-only" role="status" aria-live="polite"></div>
+
+            <section class="screen" id="screen-activity" data-screen-panel="activity">
+                <header class="page-header activity-header">
+                    <div><p class="eyebrow"><span>01</span> Live activity</p><h1 tabindex="-1">What Comet is doing</h1><p>One quiet timeline for Codex, Claude Code, and actions started here.</p></div>
+                    <div class="activity-live"><span class="status-dot" id="activity-live-dot"></span><span id="activity-live-label">Waiting for MCP</span></div>
+                </header>
+                <div class="activity-list" id="activity-list" aria-live="polite"><div class="card empty-state activity-empty"><strong>No activity yet</strong><span>Start the MCP server, then run a tool from Codex or this app.</span></div></div>
+            </section>
+
+            <section class="screen" id="screen-login" data-screen-panel="login" hidden>
+                <header class="page-header">
+                    <div>
+                        <p class="eyebrow"><span>02</span> Session</p>
+                        <h1 tabindex="-1">A trusted browser session</h1>
+                        <p>Sign in once, then reuse the saved TikTok session for every scrape.</p>
+                    </div>
+                </header>
+
+                <div class="session-layout">
+                    <section class="card session-card" aria-labelledby="session-title">
+                        <div class="session-visual" aria-hidden="true">
+                            <div class="radar-ring radar-ring-outer"></div>
+                            <div class="radar-ring radar-ring-inner"></div>
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M9.5 11V8.5a2.5 2.5 0 0 1 5 0V11"></path><rect x="6" y="11" width="12" height="8" rx="2.5"></rect><path d="M12 14.25v1.5"></path></svg>
+                        </div>
+                        <div class="session-copy">
+                            <div class="card-kicker-row">
+                                <p class="card-kicker">Authentication state</p>
+                                <span class="badge badge-neutral" id="session-badge">Checking</span>
+                            </div>
+                            <h2 id="session-title">TikTok login</h2>
+                            <p id="session-description">Checking for a saved session…</p>
+                            <p class="path-text" id="session-path"></p>
+                            <button class="button button-primary scrape-action" id="login-button" type="button">
+                                <span>Open TikTok login</span>
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5"></path></svg>
+                            </button>
+                        </div>
+                    </section>
+
+                    <aside class="card process-card" aria-labelledby="process-title">
+                        <p class="card-kicker">Manual sign-in</p>
+                        <h2 id="process-title">Three steps, stored locally</h2>
+                        <ol class="step-list">
+                            <li><span>01</span><div><strong>Open browser</strong><p>Google Chrome opens when installed; otherwise the bundled Chromium opens.</p></div></li>
+                            <li><span>02</span><div><strong>Complete login</strong><p>Use your usual TikTok sign-in flow.</p></div></li>
+                            <li><span>03</span><div><strong>Save the session</strong><p>The window closes after authentication is detected.</p></div></li>
+                        </ol>
+                        <p class="process-note">The login window waits for up to five minutes. Closing it early cancels the action.</p>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="screen" id="screen-search" data-screen-panel="search" hidden>
+                <header class="page-header">
+                    <div>
+                        <p class="eyebrow"><span>03</span> Discovery</p>
+                        <h1 tabindex="-1">Find posts worth studying</h1>
+                        <p>Search a keyword with the Python scraper and add the results to your local cache.</p>
+                    </div>
+                </header>
+
+                <form class="card action-form search-command" id="search-form">
+                    <div class="command-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="5.75"></circle><path d="m15 15 4.25 4.25"></path></svg></div>
+                    <div class="field field-grow">
+                        <label for="search-keyword">Keyword</label>
+                        <input id="search-keyword" name="keyword" type="text" placeholder="budget meal prep" autocomplete="off" required>
+                    </div>
+                    <div class="field field-small">
+                        <label for="search-limit">Results limit</label>
+                        <input id="search-limit" name="max-results" type="number" min="1" max="100" value="20" required>
+                    </div>
+                    <button class="button button-primary scrape-action" type="submit">
+                        <span>Search TikTok</span>
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5"></path></svg>
+                    </button>
+                </form>
+
+                <div class="section-heading">
+                    <div><p class="section-index">Latest run</p><h2>Search results</h2></div>
+                    <p id="search-summary">Run a search to see posts.</p>
+                </div>
+                <div class="card table-card">
+                    <div class="empty-state" id="search-empty">
+                        <span class="empty-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="5.75"></circle><path d="m15 15 4.25 4.25"></path></svg></span>
+                        <strong>No search results yet</strong>
+                        <span>Enter a keyword above to start a local swipe file.</span>
+                    </div>
+                    <div class="table-scroll" id="search-table-wrap" hidden>
+                        <table>
+                            <caption class="sr-only">Posts returned by the latest keyword search</caption>
+                            <thead><tr><th scope="col">Account</th><th scope="col" class="number-cell">Views</th><th scope="col">Caption</th><th scope="col">Post</th></tr></thead>
+                            <tbody id="search-results-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="screen" id="screen-accounts" data-screen-panel="accounts" hidden>
+                <header class="page-header">
+                    <div>
+                        <p class="eyebrow"><span>04</span> Shortlist</p>
+                        <h1 tabindex="-1">Accounts in the cache</h1>
+                        <p>Scan creators, compare 30-day performance, and tune the winning-account filter.</p>
+                    </div>
+                    <button class="button button-secondary" id="refresh-accounts" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 8a7 7 0 1 0 .55 7.2"></path><path d="M19 4.5V8h-3.5"></path></svg>
+                        <span>Refresh cache</span>
+                    </button>
+                </header>
+
+                <form class="card action-form" id="scan-form">
+                    <div class="command-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10" cy="8" r="3.25"></circle><path d="M4.75 19.25v-1.5A3.75 3.75 0 0 1 8.5 14h3A3.75 3.75 0 0 1 15.25 17.75v1.5M17.5 8.5v6M14.5 11.5h6"></path></svg></div>
+                    <div class="field field-grow">
+                        <label for="scan-username">TikTok username</label>
+                        <input id="scan-username" name="username" type="text" placeholder="creator_name" autocomplete="off" required>
+                    </div>
+                    <div class="field field-small">
+                        <label for="scan-limit">Post limit</label>
+                        <input id="scan-limit" name="max-results" type="number" min="1" max="100" value="30" required>
+                    </div>
+                    <button class="button button-primary scrape-action" type="submit">
+                        <span>Scan account</span>
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5"></path></svg>
+                    </button>
+                </form>
+
+                <fieldset class="card filter-card">
+                    <legend>Filter thresholds</legend>
+                    <p class="field-help filter-help">Applied instantly to cached results. No scrape is triggered.</p>
+                    <div class="filter-grid">
+                        <div class="field"><label for="min-views">Minimum views / 30d</label><input id="min-views" type="number" min="0" step="1000" value="100000"></div>
+                        <div class="field"><label for="min-posts">Minimum posts / 30d</label><input id="min-posts" type="number" min="0" step="1" value="15"></div>
+                        <div class="field"><label for="max-share">Maximum single-post share</label><input id="max-share" type="number" min="0" max="1" step="0.05" value="0.7"></div>
+                        <label class="check-field" for="passing-only"><input id="passing-only" type="checkbox"><span class="check-box" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none"><path d="m3.5 8 3 3 6-6"></path></svg></span><span>Show passing only</span></label>
+                    </div>
+                </fieldset>
+
+                <div class="section-heading">
+                    <div><p class="section-index">Local database</p><h2>Cached accounts</h2></div>
+                    <p id="accounts-summary">Loading cached accounts…</p>
+                </div>
+                <div class="card table-card">
+                    <div class="empty-state" id="accounts-empty" hidden>
+                        <span class="empty-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4.75 19.25v-1.5A3.75 3.75 0 0 1 8.5 14h3A3.75 3.75 0 0 1 15.25 17.75v1.5"></path><circle cx="10" cy="8" r="3.25"></circle></svg></span>
+                        <strong>No cached accounts yet</strong>
+                        <span>Search a keyword or scan an account to populate this table.</span>
+                    </div>
+                    <div class="table-scroll" id="accounts-table-wrap">
+                        <table>
+                            <caption class="sr-only">Cached TikTok account performance</caption>
+                            <thead><tr><th scope="col">Account</th><th scope="col" class="number-cell">Posts / 30d</th><th scope="col" class="number-cell">Views / 30d</th><th scope="col" class="number-cell">Max post share</th><th scope="col">Filter</th></tr></thead>
+                            <tbody id="accounts-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section class="screen" id="screen-report" data-screen-panel="report" hidden>
+                <header class="page-header">
+                    <div>
+                        <p class="eyebrow"><span>05</span> Deep dive</p>
+                        <h1 tabindex="-1">Account performance</h1>
+                        <p>Review the strongest cached posts for one creator, sorted by views.</p>
+                    </div>
+                </header>
+
+                <div id="report-empty" class="card empty-state report-empty">
+                    <span class="empty-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 19.25V13M10 19.25V9M15 19.25V11M20 19.25V4.75"></path></svg></span>
+                    <strong>No account selected</strong>
+                    <span>Select an account from the cache to open its performance report.</span>
+                    <button class="button button-secondary" type="button" data-go-to="accounts">View accounts</button>
+                </div>
+
+                <div id="report-content" hidden>
+                    <div class="card report-title-row">
+                        <div>
+                            <span class="muted-label">Selected account</span>
+                            <h2 id="report-username"></h2>
+                        </div>
+                        <button class="button button-secondary scrape-action" id="report-rescan" type="button">
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 8a7 7 0 1 0 .55 7.2"></path><path d="M19 4.5V8h-3.5"></path></svg>
+                            <span>Scan again</span>
+                        </button>
+                    </div>
+                    <div class="metric-grid" id="report-metrics"></div>
+                    <div class="section-heading">
+                        <div><p class="section-index">Ranked by reach</p><h2>Top posts</h2></div>
+                        <p id="report-summary"></p>
+                    </div>
+                    <div class="card table-card">
+                        <div class="table-scroll">
+                            <table>
+                                <caption class="sr-only">Top posts for the selected account</caption>
+                                <thead><tr><th scope="col" class="number-cell">Views</th><th scope="col">Format</th><th scope="col">Caption</th><th scope="col">Post</th></tr></thead>
+                                <tbody id="report-posts-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="screen" id="screen-mcp" data-screen-panel="mcp" hidden>
+                <header class="page-header">
+                    <div>
+                        <p class="eyebrow"><span>06</span> Connection</p>
+                        <h1 tabindex="-1">MCP server</h1>
+                        <p>Keep one local server running for Codex and Claude Code. It shares this app’s cache, session, and scrape pacing.</p>
+                    </div>
+                </header>
+
+                <div class="mcp-layout">
+                    <section class="card mcp-status-card" aria-labelledby="mcp-status-title">
+                        <div class="mcp-orb" id="mcp-orb" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="5"></rect><path d="M8 12h8M12 8v8"></path><circle cx="12" cy="12" r="1.5"></circle></svg>
+                        </div>
+                        <div class="mcp-status-copy">
+                            <p class="card-kicker">Local transport</p>
+                            <div class="mcp-title-line">
+                                <h2 id="mcp-status-title">Server stopped</h2>
+                                <span class="badge badge-neutral" id="mcp-status-badge">Stopped</span>
+                            </div>
+                            <p id="mcp-status-description">Start the server when you want an agent to use TikTok Scout.</p>
+                            <code class="endpoint" id="mcp-endpoint">http://127.0.0.1:8765/mcp/</code>
+                            <div class="mcp-actions">
+                                <button class="button button-primary" id="mcp-start" type="button">Start server</button>
+                                <button class="button button-secondary" id="mcp-stop" type="button" disabled>Stop server</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="card mcp-port-card" aria-labelledby="mcp-port-title">
+                        <p class="card-kicker">Network</p>
+                        <h2 id="mcp-port-title">Local port</h2>
+                        <p>Bound to <code>127.0.0.1</code>, so it is available only on this Mac.</p>
+                        <form id="mcp-port-form">
+                            <div class="field">
+                                <label for="mcp-port">Port</label>
+                                <input id="mcp-port" type="number" min="1024" max="65535" value="8765" required>
+                            </div>
+                            <button class="button button-secondary" type="submit">Save port</button>
+                        </form>
+                        <p class="field-help">Stop the server before changing the port.</p>
+                    </section>
+                </div>
+
+                <div class="section-heading">
+                    <div><p class="section-index">Connect once</p><h2>Agent configuration</h2></div>
+                    <p>Copy a ready-to-paste HTTP configuration. The app remains the process owner.</p>
+                </div>
+
+                <div class="config-grid">
+                    <section class="card config-card" aria-labelledby="codex-config-title">
+                        <div class="config-card-head">
+                            <div class="client-icon" aria-hidden="true"><span>⌘</span></div>
+                            <div><p class="card-kicker">config.toml</p><h2 id="codex-config-title">Codex</h2></div>
+                        </div>
+                        <pre id="codex-config">[mcp_servers.tiktok-scout]
+url = "http://127.0.0.1:8765/mcp/"</pre>
+                        <button class="button button-secondary copy-config" type="button" data-client="codex">Copy Codex config</button>
+                    </section>
+
+                    <section class="card config-card" aria-labelledby="claude-config-title">
+                        <div class="config-card-head">
+                            <div class="client-icon" aria-hidden="true"><span>C</span></div>
+                            <div><p class="card-kicker">Terminal</p><h2 id="claude-config-title">Claude Code</h2></div>
+                        </div>
+                        <pre id="claude-config">claude mcp add --transport http --scope user tiktok-scout http://127.0.0.1:8765/mcp/</pre>
+                        <button class="button button-secondary copy-config" type="button" data-client="claude">Copy Claude command</button>
+                    </section>
+                </div>
+
+                <p class="mcp-error" id="mcp-error" role="alert" hidden></p>
+            </section>
+
+            <section class="screen" id="screen-settings" data-screen-panel="settings" hidden>
+                <header class="page-header">
+                    <div>
+                        <p class="eyebrow"><span>07</span> Configuration</p>
+                        <h1 tabindex="-1">Runtime settings</h1>
+                        <p>Control scrape pacing and the local files used by the desktop app.</p>
+                    </div>
+                </header>
+
+                <form class="settings-layout" id="settings-form">
+                    <section class="card settings-section" aria-labelledby="delay-heading">
+                        <div class="settings-section-head">
+                            <div><p class="card-kicker">Pacing</p><h2 id="delay-heading">Polite delay</h2></div>
+                            <span class="setting-index" aria-hidden="true">01</span>
+                        </div>
+                        <p class="field-help">Python waits for a random duration in this range after each successful scrape.</p>
+                        <div class="two-column-fields">
+                            <div class="field"><label for="min-delay">Minimum delay</label><div class="input-with-unit"><input id="min-delay" type="number" min="0" step="0.5" required><span>sec</span></div></div>
+                            <div class="field"><label for="max-delay">Maximum delay</label><div class="input-with-unit"><input id="max-delay" type="number" min="0" step="0.5" required><span>sec</span></div></div>
+                        </div>
+                    </section>
+
+                    <section class="card settings-section" aria-labelledby="files-heading">
+                        <div class="settings-section-head">
+                            <div><p class="card-kicker">Storage</p><h2 id="files-heading">Local files</h2></div>
+                            <span class="setting-index" aria-hidden="true">02</span>
+                        </div>
+                        <div class="field"><label for="cache-path">Cache database</label><input class="mono-input" id="cache-path" type="text" spellcheck="false" required><span class="field-help">Go reads this SQLite file directly for Accounts and reports.</span></div>
+                        <div class="field"><label for="session-file-path">Session file</label><input class="mono-input" id="session-file-path" type="text" spellcheck="false" required><span class="field-help">Python stores Playwright cookies and local storage here.</span></div>
+                    </section>
+
+                    <div class="settings-actions">
+                        <button class="button button-primary" type="submit">
+                            <span>Save settings</span>
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12.5 4 4 10-10"></path></svg>
+                        </button>
+                        <span class="field-help" id="settings-file-note"></span>
+                    </div>
+                </form>
+
+                <section class="card diagnostics-card" aria-labelledby="runtime-heading">
+                    <div><p class="card-kicker">Diagnostics</p><h2 id="runtime-heading">Runtime</h2></div>
+                    <dl>
+                        <div><dt>Project</dt><dd id="project-root"></dd></div>
+                        <div><dt>Python</dt><dd id="python-path"></dd></div>
+                    </dl>
+                </section>
+            </section>
+        </main>
+    </div>
+</div>
+<script src="./src/main.js" type="module"></script>
+</body>
+</html>
