@@ -203,7 +203,7 @@ function renderActivity() {
         const reason = entry.reason ? `<p class="activity-reason">${escapeHTML(entry.reason)}</p>` : '';
         const screenshot = entry.screenshot_path ? `<div class="activity-screenshot" data-screenshot-path="${escapeHTML(entry.screenshot_path)}"><span>Loading evidence…</span></div>` : '';
         return `<details class="card activity-card ${escapeHTML(entry.status || '')}" data-activity-id="${entry.id}">
-            <summary><span class="activity-tool">${escapeHTML(entry.tool_name)}</span><span class="activity-summary">${escapeHTML(entry.result_summary || 'Working…')}</span><span class="badge activity-badge ${escapeHTML(entry.status || '')}">${escapeHTML(entry.status || 'unknown')}</span><time>${formatActivityTime(entry.started_at)}</time></summary>
+            <summary><span class="activity-kind">Tool call</span><span class="activity-tool">${escapeHTML(entry.tool_name)}</span><span class="activity-summary">${escapeHTML(entry.result_summary || 'Working…')}</span><span class="badge activity-badge ${escapeHTML(entry.status || '')}">${escapeHTML(entry.status || 'unknown')}</span><time>${formatActivityTime(entry.started_at)}</time></summary>
             <div class="activity-detail">${reason}${screenshot}<pre>${args}</pre>${entry.result_summary ? `<p>${escapeHTML(entry.result_summary)}</p>` : ''}</div>
         </details>`;
     }).join('');

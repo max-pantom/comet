@@ -2005,11 +2005,7 @@ body::before {
 }
 
 .workspace-bar {
-    min-height: 46px;
-    padding: 0 18px;
-    background: transparent;
-    border: 0;
-    backdrop-filter: none;
+    display: none;
 }
 
 .workspace-context {
@@ -2069,12 +2065,18 @@ body::before {
 
 .main-content {
     max-width: 1080px;
-    padding: 32px 42px 64px;
+    height: 100%;
+    padding: 42px 42px 64px;
     margin-inline: auto;
 }
 
 .screen {
     animation: none;
+}
+
+.screen:not(#screen-activity) {
+    width: min(100%, 760px);
+    margin-inline: auto;
 }
 
 .page-header {
@@ -2090,18 +2092,14 @@ body::before {
 .page-header h1 {
     margin: 0;
     color: rgb(255 255 255 / 0.9);
-    font-size: 22px;
+    font-size: 14px;
     font-weight: 500;
     line-height: 1.15;
     letter-spacing: -0.02em;
 }
 
 .page-header p:not(.eyebrow) {
-    max-width: 58ch;
-    margin-block-start: 7px;
-    color: var(--text-muted);
-    font-size: 13px;
-    line-height: 1.5;
+    display: none;
 }
 
 .eyebrow {
@@ -2254,6 +2252,10 @@ td {
     max-width: 460px;
 }
 
+.activity-header h1 {
+    display: none;
+}
+
 .activity-live {
     position: absolute;
     inset-block-start: 62px;
@@ -2281,7 +2283,7 @@ td {
 }
 
 .activity-card summary {
-    grid-template-columns: 14px auto minmax(0, 1fr) auto;
+    grid-template-columns: 14px auto auto minmax(0, 1fr) auto auto;
     gap: 6px;
     min-height: 28px;
     padding: 4px 0;
@@ -2308,6 +2310,13 @@ td {
     font-weight: 500;
 }
 
+.activity-kind {
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
 .activity-summary {
     color: var(--text-muted);
     font-size: 12px;
@@ -2319,7 +2328,14 @@ td {
 }
 
 .activity-badge {
-    display: none;
+    display: inline;
+    min-width: 0;
+    padding: 0;
+    color: var(--text-muted);
+    background: transparent;
+    box-shadow: none;
+    font-size: 12px;
+    text-transform: capitalize;
 }
 
 .activity-detail {
@@ -2352,6 +2368,143 @@ td {
 
 .empty-state {
     color: var(--text-muted);
+}
+
+/* Page compositions: compact working surfaces, not dashboard cards. */
+.session-layout,
+.mcp-layout,
+.settings-layout,
+.config-grid {
+    width: min(100%, 620px);
+    margin-inline: auto;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+}
+
+.session-visual,
+.process-card,
+.mcp-orb,
+.diagnostics-card,
+.command-icon {
+    display: none;
+}
+
+.session-card,
+.mcp-status-card,
+.mcp-port-card,
+.config-card,
+.settings-section,
+.filter-card,
+.action-form,
+.report-title-row,
+.report-empty,
+.table-card {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.session-card,
+.mcp-status-card {
+    display: block;
+}
+
+.session-copy,
+.mcp-status-copy {
+    width: min(100%, 460px);
+    padding: 0;
+    margin-inline: auto;
+}
+
+.session-copy {
+    text-align: center;
+}
+
+.session-copy .card-kicker-row {
+    justify-content: center;
+}
+
+.session-copy .button {
+    margin-inline: auto;
+}
+
+.action-form {
+    padding: 0;
+    grid-template-columns: minmax(180px, 1fr) minmax(108px, 0.24fr) auto;
+}
+
+.filter-card {
+    padding: 24px 0 0;
+    margin-block-start: 24px;
+    border-block-start: 1px solid var(--line);
+}
+
+.section-heading {
+    padding-block-start: 24px;
+    border-block-start: 1px solid var(--line);
+}
+
+.table-card {
+    overflow: clip;
+    background: #111116;
+    border-radius: 12px;
+    box-shadow: 0 0 0 1px var(--line);
+}
+
+.report-empty {
+    min-height: 280px;
+}
+
+.report-title-row {
+    padding: 0 0 18px;
+    border-block-end: 1px solid var(--line);
+}
+
+.metric {
+    background: #111116;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 0 0 1px var(--line);
+}
+
+.mcp-status-card,
+.mcp-port-card,
+.config-card,
+.settings-section {
+    padding: 0 0 24px;
+    border-block-end: 1px solid var(--line);
+}
+
+.mcp-title-line,
+.settings-section-head,
+.config-card-head {
+    margin-block-end: 12px;
+}
+
+.endpoint,
+.config-card pre {
+    color: rgb(255 255 255 / 0.55);
+    background: var(--surface-soft);
+    border: 0;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.settings-actions {
+    grid-column: 1;
+}
+
+.empty-state.activity-empty {
+    width: min(100%, 460px);
+    min-height: 180px;
+    margin-inline: auto;
+    background: transparent;
+    box-shadow: none;
+}
+
+.empty-state.activity-empty .empty-icon {
+    display: none;
 }
 
 @media (max-width: 58rem) {
@@ -2403,7 +2556,20 @@ td {
         padding: 24px 16px 48px;
     }
 
+    .action-form {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
     .activity-live {
         position: static;
+    }
+
+    .activity-card summary {
+        grid-template-columns: 14px auto minmax(0, 1fr) auto;
+    }
+
+    .activity-kind,
+    .activity-card time {
+        display: none;
     }
 }
