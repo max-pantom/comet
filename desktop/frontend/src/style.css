@@ -15,7 +15,7 @@
     --accent-bright: #ffffff;
     --accent-ink: #0b0b0f;
     --active: #d3a05d;
-    --brand-gradient: linear-gradient(135deg, #7f4f32 0%, #d3a05d 58%, #f0d08c 100%);
+    --brand-gradient: linear-gradient(135deg, #9a9aa0 0%, #f2f2f4 100%);
     --danger: oklch(0.72 0.18 25);
     --danger-surface: oklch(0.23 0.05 25 / 0.9);
     --focus: #aaa2ff;
@@ -45,10 +45,7 @@ body {
     min-height: 100vh;
     padding: 12px;
     overflow: hidden;
-    background:
-        radial-gradient(circle at 10% 0%, rgb(70 70 82 / 0.26), transparent 34rem),
-        radial-gradient(circle at 100% 100%, rgb(45 45 55 / 0.28), transparent 38rem),
-        linear-gradient(145deg, #17171d, #09090d 58%, #111116);
+    background: #0b0b0f;
 }
 
 body::before {
@@ -57,11 +54,7 @@ body::before {
     pointer-events: none;
     content: "";
     opacity: 0.18;
-    background-image:
-        linear-gradient(oklch(1 0 0 / 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, oklch(1 0 0 / 0.018) 1px, transparent 1px);
-    background-size: 48px 48px;
-    mask-image: linear-gradient(to bottom, black, transparent 72%);
+    background: radial-gradient(circle at 50% -20%, rgb(255 255 255 / 0.045), transparent 44%);
 }
 
 button,
@@ -182,16 +175,15 @@ h1:focus {
     width: 36px;
     height: 36px;
     place-items: center;
-    color: var(--text);
-    background: linear-gradient(145deg, #393943, #19191f);
-    border: 1px solid rgb(255 255 255 / 0.16);
-    border-radius: 13px;
-    box-shadow: 0 10px 24px rgb(0 0 0 / 0.28), 0 1px 0 rgb(255 255 255 / 0.12) inset;
+    background: #0e0e12;
+    border: 1px solid rgb(255 255 255 / 0.12);
+    border-radius: 50%;
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.34), 0 1px 0 rgb(255 255 255 / 0.08) inset;
 }
 
 .brand-mark svg {
-    width: 21px;
-    height: 21px;
+    width: 19px;
+    height: 19px;
 }
 
 .brand-copy strong,
