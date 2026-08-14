@@ -2376,6 +2376,7 @@ body::before {
 }
 
 .workspace {
+    grid-template-rows: minmax(0, 1fr);
     grid-row: 2;
     grid-column: 1;
     min-height: 0;
@@ -3128,5 +3129,97 @@ td {
 @media (max-width: 45rem) {
     .main-content {
         padding: 32px 16px 48px;
+    }
+}
+
+/* Header and page visibility corrections from the final Paper review. */
+.brand {
+    gap: 0;
+}
+
+.brand-copy {
+    display: none !important;
+}
+
+.brand-mark {
+    width: 20px;
+    height: 20px;
+    flex-basis: 20px;
+}
+
+.brand-mark svg {
+    width: 14px;
+    height: 14px;
+    opacity: 1;
+}
+
+.paper-icon-button.is-active,
+.paper-new-button.is-active {
+    color: inherit;
+    background: #1a1a21;
+}
+
+.paper-view-button {
+    cursor: default;
+    opacity: 0.8;
+}
+
+.main-content {
+    grid-row: 1;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    padding-block-start: 24px;
+}
+
+.field label,
+.filter-card legend,
+.card-kicker,
+.section-index,
+.muted-label {
+    color: rgb(255 255 255 / 0.6) !important;
+}
+
+.field-help,
+.card p,
+.section-heading > p,
+.path-text,
+#session-description,
+#accounts-summary,
+#search-summary,
+#report-summary {
+    color: rgb(255 255 255 / 0.5) !important;
+}
+
+.field input,
+.endpoint,
+.config-card pre {
+    color: rgb(255 255 255 / 0.86);
+    background: #1a1a21;
+    box-shadow:
+        0 0.6px 0.2px -0.4px rgb(255 255 255 / 0.15) inset,
+        0 4px 12px rgb(255 255 255 / 0.02) inset;
+}
+
+.table-card,
+.metric {
+    background: #1a1a21;
+}
+
+.settings-section,
+.mcp-status-card,
+.mcp-port-card,
+.config-card,
+.session-card,
+.action-form,
+.filter-card,
+.report-title-row {
+    visibility: visible;
+    opacity: 1;
+}
+
+@media (max-width: 45rem) {
+    .main-content {
+        padding-block-start: 20px;
     }
 }

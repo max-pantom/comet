@@ -147,7 +147,7 @@ function activateScreen(screenName, moveFocus = true) {
     document.querySelectorAll('[data-screen-panel]').forEach((panel) => {
         panel.hidden = panel.dataset.screenPanel !== screenName;
     });
-    document.querySelectorAll('[data-screen]').forEach((button) => {
+    document.querySelectorAll('.nav-item[data-screen]').forEach((button) => {
         const active = button.dataset.screen === screenName;
         button.classList.toggle('is-active', active);
         if (active) button.setAttribute('aria-current', 'page');
@@ -444,11 +444,6 @@ async function initialise() {
 
 document.querySelectorAll('[data-screen]').forEach((button) => {
     button.addEventListener('click', () => activateScreen(button.dataset.screen));
-});
-
-document.querySelector('#toggle-tabs').addEventListener('click', (event) => {
-    const hidden = document.querySelector('#app').classList.toggle('tabs-hidden');
-    event.currentTarget.setAttribute('aria-pressed', String(hidden));
 });
 
 document.querySelectorAll('[data-go-to]').forEach((button) => {
