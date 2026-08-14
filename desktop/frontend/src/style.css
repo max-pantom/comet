@@ -1769,6 +1769,386 @@ svg {
     }
 }
 
+/* Paper fidelity pass: the exported frame uses one 14px UI size and a
+   deliberately small spacing vocabulary. These rules cover every tab. */
+:root {
+    --paper-type: 14px;
+    --paper-line: 16px;
+    --paper-gap-inline: 6px;
+    --paper-gap-control: 8px;
+    --paper-gap-section: 24px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-inline-start: auto;
+}
+
+.paper-icon-button,
+.paper-new-button,
+.paper-view-button {
+    display: inline-flex;
+    min-width: 24px;
+    min-height: 24px;
+    padding: 4px;
+    color: #888;
+    cursor: pointer;
+    background: #1a1a21;
+    border: 0;
+    border-radius: 90px;
+    box-shadow:
+        0 0.6px 0.2px -0.4px rgb(255 255 255 / 0.15) inset,
+        0 4px 12px rgb(255 255 255 / 0.02) inset;
+    align-items: center;
+    justify-content: center;
+}
+
+.paper-icon-button svg,
+.paper-new-button svg,
+.paper-view-button svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.paper-new-button {
+    gap: 2px;
+    padding-inline-end: 7px;
+    color: rgb(255 255 255 / 0.8);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.paper-new-button svg {
+    opacity: 0.6;
+}
+
+.paper-view-button {
+    background: transparent;
+    box-shadow: none;
+}
+
+.paper-icon-button:hover,
+.paper-new-button:hover,
+.paper-view-button:hover {
+    color: #fff;
+}
+
+.tabs-hidden .primary-nav {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.page-header {
+    width: min(100%, 620px);
+    gap: 0;
+    margin: 0 auto 24px;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: start;
+}
+
+.page-header h1,
+.card h2,
+.section-heading h2,
+.settings-section-head h2,
+.mcp-title-line h2,
+.mcp-port-card h2,
+.config-card-head h2 {
+    margin: 0;
+    color: rgb(255 255 255 / 0.8);
+    font-size: var(--paper-type);
+    font-weight: 500;
+    line-height: var(--paper-line);
+    letter-spacing: 0;
+}
+
+.activity-header {
+    width: min(100%, 620px);
+    margin-block-end: 24px;
+    justify-content: flex-start;
+    text-align: start;
+}
+
+.activity-header > div:first-child {
+    display: none;
+}
+
+.activity-live {
+    position: static;
+    display: flex;
+    min-height: 16px;
+    padding: 0;
+    color: rgb(255 255 255 / 0.6);
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+}
+
+.activity-detail pre,
+#session-description,
+.input-with-unit span {
+    font-size: 14px !important;
+    line-height: 16px;
+}
+
+.comet-mini {
+    width: 14px;
+    height: 14px;
+    flex: 0 0 14px;
+    opacity: 0.4;
+    background:
+        radial-gradient(circle at 29% 69%, #0e0e12 0 20%, transparent 21%),
+        radial-gradient(circle at 71% 31%, #0e0e12 0 20%, transparent 21%),
+        #d9d9d9;
+    border-radius: 50%;
+}
+
+.activity-list {
+    width: min(100%, 620px);
+    gap: 24px;
+}
+
+.activity-card summary {
+    grid-template-columns: 14px auto auto minmax(0, 1fr) auto auto;
+    gap: 6px;
+    min-height: 16px;
+    padding: 0;
+}
+
+.activity-card summary::before {
+    width: 14px;
+    height: 14px;
+}
+
+.activity-kind,
+.activity-tool,
+.activity-summary,
+.activity-badge,
+.activity-card time,
+.activity-detail p,
+.activity-reason {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+}
+
+.activity-tool {
+    padding: 2px 4px;
+}
+
+.activity-detail {
+    gap: 8px;
+    margin: 8px 0 0 20px;
+    padding: 8px;
+}
+
+.activity-detail pre {
+    padding: 4px;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.main-content {
+    padding-block-start: 64px;
+}
+
+.screen:not(#screen-activity),
+.session-layout,
+.mcp-layout,
+.settings-layout,
+.config-grid {
+    width: min(100%, 620px);
+}
+
+.session-layout,
+.mcp-layout,
+.settings-layout,
+.config-grid {
+    gap: 24px;
+}
+
+.session-copy,
+.mcp-status-copy {
+    width: 100%;
+    max-width: none;
+}
+
+.card-kicker,
+.section-index,
+.muted-label,
+.field label,
+.field-help,
+.filter-card legend,
+.settings-file-note,
+.empty-state strong,
+.empty-state span,
+.path-text,
+.mcp-status-copy p,
+.mcp-port-card p,
+.config-card p,
+.diagnostics-card dt,
+.diagnostics-card dd {
+    font-size: 14px !important;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.field {
+    gap: 8px;
+}
+
+.field input {
+    min-height: 32px;
+    padding: 8px;
+    font-size: 14px;
+    line-height: 16px;
+    border-radius: 4px;
+}
+
+.button,
+.badge {
+    min-height: 24px;
+    padding: 4px 8px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.button {
+    gap: 6px;
+}
+
+.badge {
+    border-radius: 4px;
+}
+
+.action-form {
+    gap: 8px;
+}
+
+.filter-card {
+    padding-block-start: 24px;
+    margin-block-start: 24px;
+}
+
+.filter-card legend {
+    padding: 0;
+    margin-block-end: 8px;
+}
+
+.filter-grid,
+.two-column-fields,
+.metric-grid,
+.config-grid {
+    gap: 8px;
+}
+
+.section-heading {
+    gap: 8px;
+    padding-block-start: 24px;
+    margin: 24px 0 8px;
+}
+
+.section-heading > p {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+th,
+td {
+    padding: 8px;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.empty-state {
+    gap: 8px;
+    padding: 24px;
+}
+
+.report-title-row {
+    gap: 8px;
+    padding-block-end: 24px;
+}
+
+.metric {
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.metric span,
+.metric strong {
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.mcp-status-card,
+.mcp-port-card,
+.config-card,
+.settings-section {
+    gap: 24px;
+    padding-block-end: 24px;
+}
+
+.mcp-title-line,
+.mcp-actions,
+.settings-section-head,
+.config-card-head,
+#mcp-port-form {
+    gap: 8px;
+    margin-block: 0 8px;
+}
+
+.endpoint,
+.config-card pre {
+    padding: 4px;
+    margin-block: 8px;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.settings-section {
+    padding-inline: 0;
+}
+
+.setting-index,
+.client-icon,
+.empty-icon {
+    display: none;
+}
+
+.settings-actions {
+    gap: 8px;
+    padding: 0;
+}
+
+@media (max-width: 45rem) {
+    .header-actions {
+        display: none;
+    }
+
+    .main-content {
+        padding-block-start: 32px;
+    }
+
+    .activity-card summary {
+        grid-template-columns: 14px auto minmax(0, 1fr) auto;
+    }
+}
+
 @media (max-width: 25rem) {
     .page-header h1 {
         font-size: 1.75rem;
@@ -2571,5 +2951,182 @@ td {
     .activity-kind,
     .activity-card time {
         display: none;
+    }
+}
+
+/* Final cross-screen contract. Keep this last: legacy component declarations
+   above may not change Paper's typography or spacing. */
+body,
+button,
+input {
+    font-size: 14px;
+}
+
+.page-header h1,
+.card h2,
+.section-heading h2,
+.settings-section-head h2,
+.mcp-title-line h2,
+.mcp-port-card h2,
+.config-card-head h2,
+.field label,
+.filter-card legend,
+.field-help,
+.card-kicker,
+.section-index,
+.muted-label,
+.path-text,
+.empty-state strong,
+.empty-state span,
+.button,
+.badge,
+th,
+td,
+.metric span,
+.metric strong,
+.activity-kind,
+.activity-tool,
+.activity-summary,
+.activity-badge,
+.activity-card time,
+.activity-detail p,
+.activity-reason,
+.endpoint,
+.config-card pre {
+    font-size: 14px !important;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0;
+}
+
+.main-content {
+    padding: 64px 42px;
+}
+
+.page-header {
+    width: min(100%, 620px);
+    margin: 0 auto 24px;
+}
+
+.screen:not(#screen-activity),
+.activity-header,
+.activity-list,
+.session-layout,
+.mcp-layout,
+.settings-layout,
+.config-grid {
+    width: min(100%, 620px);
+}
+
+.activity-header {
+    margin-inline: auto;
+}
+
+.activity-list,
+.session-layout,
+.mcp-layout,
+.settings-layout,
+.config-grid {
+    gap: 24px;
+}
+
+.activity-card summary {
+    gap: 6px;
+    padding: 0;
+}
+
+.activity-detail {
+    gap: 8px;
+    margin-block-start: 8px;
+    padding: 8px;
+}
+
+.action-form,
+.filter-grid,
+.two-column-fields,
+.metric-grid,
+.mcp-actions,
+.config-grid,
+.settings-actions,
+#mcp-port-form {
+    gap: 8px;
+}
+
+.field {
+    gap: 8px;
+}
+
+.field input {
+    min-height: 32px;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 14px !important;
+}
+
+.button,
+.badge {
+    min-height: 24px;
+    padding: 4px 8px;
+}
+
+.section-heading {
+    gap: 8px;
+    padding-block-start: 24px;
+    margin: 24px 0 8px;
+}
+
+th,
+td {
+    padding: 8px;
+}
+
+.metric {
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.check-field,
+.check-field span,
+.section-heading > p,
+#accounts-summary,
+#search-summary,
+#report-summary,
+.mcp-status-copy > p,
+.mcp-port-card > p,
+.config-card p {
+    font-size: 14px !important;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.activity-live {
+    position: static;
+    min-height: 14px;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.mcp-status-card,
+.mcp-port-card,
+.config-card,
+.settings-section {
+    gap: 24px;
+    padding: 0 0 24px;
+}
+
+.endpoint,
+.config-card pre {
+    padding: 4px;
+    margin-block: 8px;
+    border-radius: 4px;
+}
+
+@media (max-width: 45rem) {
+    .main-content {
+        padding: 32px 16px 48px;
     }
 }

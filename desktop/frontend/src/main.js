@@ -225,14 +225,14 @@ function connectActivitySocket() {
     closeActivitySocket();
     const status = state.mcpStatus;
     if (!status?.running || !window.WebSocket) {
-        elements.activityLiveLabel.textContent = status?.running ? 'WebSocket unavailable' : 'Start MCP to watch live';
+        elements.activityLiveLabel.textContent = status?.running ? 'TikTok connected · Codex unavailable' : 'Waiting for TikTok and Codex';
         elements.activityLiveDot?.classList.remove('is-busy');
         return;
     }
     const endpoint = status.url.replace(/^http/, 'ws').replace(/\/mcp\/$/, '/events');
     const socket = new WebSocket(endpoint);
     state.activitySocket = socket;
-    socket.onopen = () => { elements.activityLiveLabel.textContent = 'Live'; elements.activityLiveDot?.classList.add('is-busy'); };
+    socket.onopen = () => { elements.activityLiveLabel.textContent = 'Connected to TikTok and Codex'; elements.activityLiveDot?.classList.add('is-busy'); };
     socket.onmessage = (event) => {
         try {
             const entry = JSON.parse(event.data);
@@ -242,7 +242,7 @@ function connectActivitySocket() {
             renderActivity();
         } catch { /* ignore malformed event */ }
     };
-    socket.onclose = () => { elements.activityLiveLabel.textContent = 'Disconnected'; elements.activityLiveDot?.classList.remove('is-busy'); };
+    socket.onclose = () => { elements.activityLiveLabel.textContent = 'Waiting for TikTok and Codex'; elements.activityLiveDot?.classList.remove('is-busy'); };
 }
 
 async function refreshMCPStatus() {
@@ -444,6 +444,11 @@ async function initialise() {
 
 document.querySelectorAll('[data-screen]').forEach((button) => {
     button.addEventListener('click', () => activateScreen(button.dataset.screen));
+});
+
+document.querySelector('#toggle-tabs').addEventListener('click', (event) => {
+    const hidden = document.querySelector('#app').classList.toggle('tabs-hidden');
+    event.currentTarget.setAttribute('aria-pressed', String(hidden));
 });
 
 document.querySelectorAll('[data-go-to]').forEach((button) => {
