@@ -1,5 +1,5 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <g clip-path="url(#macos-squircle)">
+  <g transform="translate(36.2667 36.2667) scale(0.858333)" clip-path="url(#macos-squircle)">
     <rect width="512" height="512" fill="url(#background)"/>
     <g transform="translate(46.08 46.08) scale(0.82)" filter="url(#inner-shadows)">
       <path d="M60 256C60 364.248 147.752 452 256 452C364.248 452 452 364.248 452 256C452 147.752 364.248 60 256 60C147.752 60 60 147.752 60 256ZM256.146 190.667C256.146 145.564 292.709 109 337.812 109C382.916 109 419.479 145.564 419.479 190.667C419.479 235.77 382.916 272.333 337.812 272.333C292.709 272.333 256.146 235.77 256.146 190.667ZM92.8125 321.333C92.8127 276.23 129.376 239.667 174.479 239.667C219.582 239.667 256.145 276.23 256.146 321.333C256.146 366.436 219.583 403 174.479 403C129.376 403 92.8125 366.436 92.8125 321.333Z" fill="#C3956B"/>
@@ -7,7 +7,7 @@
   </g>
   <defs>
     <clipPath id="macos-squircle">
-      <path d="M256 16C391 16 437 16 469 43C496 75 496 121 496 256C496 391 496 437 469 469C437 496 391 496 256 496C121 496 75 496 43 469C16 437 16 391 16 256C16 121 16 75 43 43C75 16 121 16 256 16Z"/>
+      <path d="M256 16C376 16 429 16 463 49C496 83 496 136 496 256C496 376 496 429 463 463C429 496 376 496 256 496C136 496 83 496 49 463C16 429 16 376 16 256C16 136 16 83 49 49C83 16 136 16 256 16Z"/>
     </clipPath>
     <filter id="inner-shadows" x="60" y="59" width="392" height="397" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
       <feFlood flood-opacity="0" result="BackgroundImageFix"/>
