@@ -20,7 +20,9 @@ screenshots/
 *.log
 
 # Desktop build and frontend dependencies
-desktop/build/
+desktop/build/*
+!desktop/build/appicon.svg
+!desktop/build/appicon.png
 desktop/frontend/node_modules/
 desktop/frontend/dist/
 desktop/frontend/.vite/
