@@ -1,7 +1,6 @@
 # tiktok-scout
 
-A cheap, self-hosted MCP tool that automates Steps 1–3 of the
-`slideshow-distribution-app-growth` playbook: search a niche, cache what
+A cheap, self-hosted MCP tool that automates search a niche, cache what
 comes back, filter down to accounts that are actually winning on a
 repeatable format (not a one-off fluke), and pull a report to reverse-
 engineer why. The desktop app hosts it over local streamable HTTP so Claude
